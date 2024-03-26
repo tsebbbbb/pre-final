@@ -37,7 +37,7 @@
             <td>{{$data->ig}}</td>
             <td>{{$data->picture}}</td>
             <td>
-             <button type="button" class="btn btn-warning">Edit</button>
+             <a href="/form/{{$data -> id}}/edit"<button type="button" class="btn btn-warning">Edit</button></a>
 
              <form action = "/form/{{$data->id}}" method = "POST">
                 @csrf

@@ -56,17 +56,28 @@ class DataController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Data $data)
+    public function edit(String $id)
     {
-        //
+        $data = Data::find($id);
+        if($data ===  null){
+            return redirect('form');
+        }else{
+             return view("/edit", compact("data"));
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Data $data)
+    public function update(Request $request, String $id)
     {
-        //
+        $data = Data::find($id);
+        $data->nickname = $request->Nickname;
+        $data->birthday = $request->Birthday;
+        $data->ig = $request->IG;
+        $data->pictrue = $request->Picture;
+        $data->save();
+        return Redirect('/form');
     }
 
     /**
